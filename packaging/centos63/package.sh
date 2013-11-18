@@ -15,7 +15,9 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+# 该脚本文件用于编译CloudStack 的rpm 包
 
+#usage函数用于提供控制台输出帮助
 function usage() {
  echo ""
  echo "usage: ./package.sh [-p|--pack] [-h|--help] [ARGS]"
@@ -30,6 +32,7 @@ function usage() {
  exit 1
 }
 
+#rpm打包函数
 function packaging() {
 	 
 CWD=`pwd`
