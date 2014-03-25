@@ -19,24 +19,37 @@ package com.cloud.hypervisor.vmware.mo;
 
 import com.cloud.hypervisor.vmware.util.VmwareContext;
 
+/**
+ * 
+ * @author hadoop
+ * vmware 测试
+ */
 public class VmwareMOTest {
 
 	public static void main(String args[]) {
         try {
-/*        	
-        	VmwareContext context = TestVmwareContextFactory.create("10.223.80.29", "Administrator", "Suite219");
-        	
-        	DatacenterMO dcMo = new DatacenterMO(context, "vsphere5");
-        	HostMO hostMo = new HostMO(context, dcMo.findHost("10.223.80.27"));
+       	
+        	//VmwareContext context = TestVmwareContextFactory.create("10.192.18.235", "Administrator", "1qaz@WSX");
+        	VmwareContext context = TestVmwareContextFactory.create("10.196.37.1", "yuntest", "Cpic1234");
+        	DatacenterMO dcMo = new DatacenterMO(context, "2701");
+      
+        
+        	HostMO hostMo = new HostMO(context, dcMo.findHost("10.192.18.75"));
 
-        	DatastoreMO dsMo = new DatastoreMO(context, dcMo.findDatastore("Storage1"));
-        	hostMo.importVmFromOVF("/tmp/ubuntu-12.04.1-desktop-i386-nest-13.02.04.ovf", "Test123", dsMo, "thin");
+        	DatastoreMO dsMo = new DatastoreMO(context, dcMo.findDatastore("datastore1"));
+        	
+        	System.out.println("存储路径:"+dsMo.getDatastoreRootPath());
+        	System.out.println("仓库大小:"+dsMo.getInventoryPath());
+
+        	//hostMo.importVmFromOVF("/tmp/ubuntu-12.04.1-desktop-i386-nest-13.02.04.ovf", "Test123", dsMo, "thin");
 
         	
-        	VirtualMachineMO vmMo = dcMo.findVm("i-2-3-VM");
-        	Thread.sleep(10*60000);
-        	vmMo.removeAllSnapshots();
-*/        	
+        	//VirtualMachineMO vmMo = dcMo.findVm("test");
+        	
+      
+        	//Thread.sleep(10*60000);
+        	//vmMo.removeAllSnapshots();
+        	
         } catch (Exception e) {
         	e.printStackTrace();
         }

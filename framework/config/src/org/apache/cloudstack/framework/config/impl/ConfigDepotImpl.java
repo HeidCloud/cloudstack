@@ -66,6 +66,9 @@ import com.cloud.utils.exception.CloudRuntimeException;
  *     when constructing a ConfigKey then configuration server should use the
  *     validation class to validate the value the admin input for the key.
  */
+/*
+ * 配置实现类
+ */
 public class ConfigDepotImpl implements ConfigDepot, ConfigDepotAdmin {
     private final static Logger s_logger = Logger.getLogger(ConfigDepotImpl.class);
     @Inject

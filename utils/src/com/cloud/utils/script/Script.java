@@ -40,11 +40,15 @@ import org.apache.log4j.Logger;
 import com.cloud.utils.PropertiesUtil;
 import com.cloud.utils.concurrency.NamedThreadFactory;
 import com.cloud.utils.script.OutputInterpreter.TimedOutLogger;
-
+/**
+ * 脚本命令封装类
+ * @author hadoop
+ *
+ */
 public class Script implements Callable<String> {
     private static final Logger s_logger = Logger.getLogger(Script.class);
 
-    private final Logger _logger;
+    private final Logger _logger;//日志对象
 
     public static final String ERR_EXECUTE = "execute.error";
     public static final String ERR_TIMEOUT = "timeout";

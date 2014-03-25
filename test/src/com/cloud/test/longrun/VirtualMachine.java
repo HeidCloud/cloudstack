@@ -30,7 +30,11 @@ import com.cloud.test.stress.TestClientWithAPI;
 
 import java.io.IOException;
 
-
+/**
+ * 
+ * @author hadoop
+ * 虚拟机测试
+ */
 public class VirtualMachine {
 	public static final Logger s_logger= Logger.getLogger(VirtualMachine.class.getClass());
 	

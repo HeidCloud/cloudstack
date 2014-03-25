@@ -21,6 +21,11 @@ import java.util.Map;
 
 import com.vmware.vim25.VirtualMachineGuestOsIdentifier;
 
+/**
+ * 
+ * @author heidsoft
+ * 操作系统关系映射
+ */
 public class VmwareGuestOsMapper {
 	private static Map<String, VirtualMachineGuestOsIdentifier> s_mapper = new HashMap<String, VirtualMachineGuestOsIdentifier>();
 	static {

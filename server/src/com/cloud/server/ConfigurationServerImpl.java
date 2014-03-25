@@ -661,17 +661,24 @@ public class ConfigurationServerImpl extends ManagerBase implements Configuratio
 
     }
 
+    /**
+     * 更新ssh 密钥对
+     */
     @Override
     @DB
     public void updateKeyPairs() {
         // Grab the SSH key pair and insert it into the database, if it is not present
 
         String username = System.getProperty("user.name");
+        
+        //如果是开发者身份
         Boolean devel = Boolean.valueOf(_configDao.getValue("developer"));
         if (!username.equalsIgnoreCase("cloud") && !devel) {
             s_logger.warn("Systemvm keypairs could not be set. Management server should be run as cloud user, or in development mode.");
             return;
         }
+        
+        //如果数据库存在ssh 密钥
         String already = _configDao.getValue("ssh.privatekey");
         String homeDir = System.getProperty("user.home");
         if (homeDir == null) {
@@ -697,7 +704,8 @@ public class ConfigurationServerImpl extends ManagerBase implements Configuratio
             privkeyfile = new File(homeDir + "/.ssh/id_rsa");
             pubkeyfile = new File(homeDir + "/.ssh/id_rsa.pub");
         }
-
+        
+        //如果数据库不存在ssh 
         if (already == null || already.isEmpty()) {
             if (s_logger.isInfoEnabled()) {
                 s_logger.info("Systemvm keypairs not found in database. Need to store them in the database");
@@ -828,7 +836,10 @@ public class ConfigurationServerImpl extends ManagerBase implements Configuratio
             writeKeyToDisk(pubKey, homeDir + "/.ssh/id_rsa.pub");
         }
     }
-
+    
+    /*
+     * 
+     */
     protected void injectSshKeysIntoSystemVmIsoPatch(String publicKeyPath, String privKeyPath) {
         String injectScript = "scripts/vm/systemvm/injectkeys.sh";
         String scriptPath = Script.findScript("", injectScript);
